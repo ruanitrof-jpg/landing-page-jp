@@ -1,0 +1,6 @@
+# Ignora as pastas de dependências e de build
+node_modules/
+dist/
+
+# Ignora arquivos de sistema
+.DS_Store
