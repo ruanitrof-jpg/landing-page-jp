@@ -1,0 +1,38 @@
+name: 🚀 Deploy to Hostinger
+
+# O robô é ativado toda vez que você mandar código para a branch 'main'
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  web-deploy:
+    name: 🎉 Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Pega o seu código mais recente
+      - name: 🚚 Obter código
+        uses: actions/checkout@v4
+
+      # 2. Prepara o computador do robô com o Node.js
+      - name: 🟢 Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Instala as dependências e roda o npm run build
+      - name: 🔨 Fazer o Build (Vite)
+        run: |
+          npm install
+          npm run build
+
+      # 4. Envia APENAS a pasta 'dist' pronta para a Hostinger
+      - name: 📂 Sincronizar arquivos (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./public_html/
