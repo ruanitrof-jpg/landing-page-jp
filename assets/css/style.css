@@ -24,8 +24,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .hero-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:36px;max-width:460px}
 .btn-primary{background:var(--salmon);color:var(--charcoal);font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;border-radius:2px;cursor:pointer;border:none}
 
-.video-wrapper{position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:4px solid var(--salmon);background:#000}
-.video-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%}
+/* VÍDEO PRINCIPAL (Ajustado para Vertical 9:16) */
+.video-wrapper {
+  width: 100%;
+  max-width: 320px; /* Trava o tamanho para não ficar gigante no computador */
+  margin: 0 auto; /* Centraliza o vídeo */
+  position: relative;
+  
+  /* A MÁGICA: Define a proporção 9:16 (Vertical) */
+  aspect-ratio: 9 / 16; 
+  
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border: 4px solid var(--salmon);
+  background: #000;
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que o vídeo preencha o espaço sem deformar */
+}
 
 /* SECTIONS */
 section{padding:88px 6%}
@@ -87,30 +110,39 @@ h2 strong{font-weight:700}
 .prints-header{text-align:center;margin-bottom:30px}
 .prints-header h3{font-family:'Poppins',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal)}
 
-.prints-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  max-width:1000px;
-  margin:0 auto;
+.prints-grid {
+  display: flex; /* Muda de grade para linha */
+  flex-wrap: nowrap; /* Impede que quebrem linha */
+  overflow-x: auto; /* Habilita o scroll horizontal no celular */
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 20px; /* Espaço para a barra de rolagem não cortar a sombra */
+  
+  /* Opcional: esconde a barra de rolagem em navegadores modernos */
+  scrollbar-width: thin; 
 }
 
-/* A Moldura Individual para cada print */
+/* Ajuste individual para cada print */
 .print-frame-individual {
+  flex: 0 0 auto; /* Impede que a foto encolha */
+  width: 200px; /* Largura fixa para ficar um do lado do outro */
   background: var(--white);
-  padding: 12px;
+  padding: 8px;
   border: 3px solid var(--salmon);
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
 }
+
 .print-frame-individual:hover {
   transform: translateY(-5px);
 }
+
 .print-img {
   width: 100%;
-  height: auto;
-  border-radius: 6px;
+  height: 100%; /* Força a imagem a preencher a altura da moldura */
+  object-fit: cover; /* Preenche o espaço sem esticar a imagem */
+  border-radius: 8px; /* Bordas internas da foto */
   display: block;
 }
 
