@@ -1,18 +1,16 @@
-import { WhatsAppAdapter } from './adapters/WhatsAppAdapter.js';
-import { LocalStorageAdapter } from './adapters/LocalStorageAdapter.js';
-import { CartDomain } from './core/CartDomain.js';
-import { DOMAdapter } from './adapters/DOMAdapter.js';
+document.addEventListener('DOMContentLoaded', () => {
+  // Coloque o número do comercial aqui (com DDD)
+  const WHATSAPP_NUMBER = "5511999999999"; 
+  const DEFAULT_MESSAGE = "Olá! Gostaria de mais informações sobre o programa de revenda.";
 
-// 1. Instanciando a nossa Infraestrutura (Adapters)
-// Nota: Substitua o número abaixo pelo WhatsApp oficial da Juliana Prado se necessário
-const whatsappService = new WhatsAppAdapter('5543999999999'); 
-const storageService = new LocalStorageAdapter();
+  const whatsappButtons = document.querySelectorAll('.js-cta-whatsapp');
 
-// 2. Inversão de Dependência: Injetando os serviços utilitários dentro do Core
-const businessLogic = new CartDomain(whatsappService, storageService);
-
-// 3. Inicializando nossa interface e ligando os escutadores do DOM
-const interfaceUser = new DOMAdapter(businessLogic);
-interfaceUser.init();
-
-console.log('🚀 [Ronin Hexagonal] Landing Page Juliana Prado carregada com total separação de conceitos!');
+  whatsappButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const encodedMessage = encodeURIComponent(DEFAULT_MESSAGE);
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
+    });
+  });
+});
