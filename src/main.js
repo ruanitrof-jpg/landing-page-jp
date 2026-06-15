@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Coloque o número do comercial aqui (com DDD)
+  // Número do WhatsApp (coloque o DDD)
   const WHATSAPP_NUMBER = "5511999999999"; 
-  const DEFAULT_MESSAGE = "Olá! Gostaria de mais informações sobre o programa de revenda.";
+  const DEFAULT_MESSAGE = "Olá! Gostaria de mais informações sobre o programa de revenda da Juliana Prado.";
 
   const whatsappButtons = document.querySelectorAll('.js-cta-whatsapp');
 

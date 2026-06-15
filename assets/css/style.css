@@ -15,7 +15,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-logo span{color:var(--gold)}
 .nav-btn{background:var(--charcoal);color:var(--white);font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border-radius:2px;cursor:pointer;border:none}
 
-/* HERO */
+/* HERO (ORIGINAL INTACTO) */
 .hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding:110px 6% 72px}
 .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 500px;gap:72px;align-items:center}
 .eyebrow{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
@@ -23,8 +23,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .hero h1 strong{font-weight:700;color:var(--salmon);display:block}
 .hero-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:36px;max-width:460px}
 .btn-primary{background:var(--salmon);color:var(--charcoal);font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;border-radius:2px;cursor:pointer;border:none}
-.video-wrapper{position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:4px solid var(--salmon)}
-.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:4px solid var(--salmon);background:#000}
+.video-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%}
 
 /* SECTIONS */
 section{padding:88px 6%}
@@ -62,12 +63,56 @@ h2 strong{font-weight:700}
 .audience-card h4{font-size:16px;color:var(--charcoal);margin-bottom:8px}
 .audience-card p{font-size:13.5px;color:var(--charcoal-mid)}
 
-/* FAQ */
-.faq-section{background:var(--white)}
-.faq-grid{max-width:800px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{background:var(--cream);border-radius:4px;padding:24px 32px}
-.faq-item h4{font-size:15px;color:var(--charcoal);font-weight:600;margin-bottom:8px}
-.faq-item p{font-size:14px;color:var(--charcoal-mid)}
+/* --- DEPOIMENTOS: VÍDEO VERTICAL + PRINTS COM MOLDURA INDIVIDUAL --- */
+.testimonial-section{background:var(--white)}
+.testimonial-header{text-align:center;margin-bottom:40px}
+.testimonial-header h2{text-align:center}
+
+.video-testimonial-wrapper {
+  width: 100%;
+  max-width: 320px; 
+  margin: 0 auto 50px; 
+  position: relative;
+  aspect-ratio: 9 / 16; 
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 4px solid var(--salmon);
+  background: #000;
+}
+.video-testimonial-wrapper video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+}
+
+.prints-header{text-align:center;margin-bottom:30px}
+.prints-header h3{font-family:'Poppins',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal)}
+
+.prints-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+/* A Moldura Individual para cada print */
+.print-frame-individual {
+  background: var(--white);
+  padding: 12px;
+  border: 3px solid var(--salmon);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+.print-frame-individual:hover {
+  transform: translateY(-5px);
+}
+.print-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
 
 /* CTA & FOOTER */
 .cta-section{background:var(--salmon);text-align:center;padding:100px 6%}
@@ -85,4 +130,7 @@ footer small{font-size:11px;color:rgba(255,255,255,.3)}
   .audience-split{grid-template-columns:1fr}
   .audience-image{height:350px}
   .gallery-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .prints-grid{grid-template-columns:1fr}
 }
